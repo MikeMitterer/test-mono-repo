@@ -1,8 +1,3 @@
-pipeline {
-    agent {
-        label 'linux'
-    }
-
     // 0 - unchanged, 1 - changed
     environment { SRC_CHANGED=true }
 
@@ -106,4 +101,3 @@ pipeline {
     //     }
     // }
 
-}
