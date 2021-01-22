@@ -1,0 +1,16 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "bootstrap": "lerna exec yarn",
+    "publish": "lerna publish --force-publish",
+    "test": "lerna run test"
+  },
+  "workspaces": {
+    "packages": ["packages/*"],
+    "nohoist": ["**/@mmit/vuetify-ts-starter"]
+  },
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
+}
