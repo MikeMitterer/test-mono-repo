@@ -1,16 +1,19 @@
 {
-  "name": "root",
+  "name": "Templates",
+  "packageManager": "yarn@4.0.0-rc.50",
   "private": true,
+  "workspaces": [
+    "packages/typescript-starter"
+  ],
+  "installConfig": {
+    "hoistingLimits": "dependencies"
+  },
   "scripts": {
-    "bootstrap": "lerna exec yarn",
-    "publish": "lerna publish --force-publish",
-    "test": "lerna run test"
+    "pkg:version": "yarn workspaces foreach --exclude . -A run pkg:version",
+    "update:browser": "yarn workspaces foreach --exclude . -A run update:browser",
+    "pwd": "yarn workspaces foreach --exclude . -A exec pwd"
   },
-  "workspaces": {
-    "packages": ["packages/*"],
-    "nohoist": ["**/@mmit/vuetify-ts-starter"]
-  },
-  "devDependencies": {
-    "lerna": "^3.22.1"
+  "dependencies": {
+    "@yarnpkg/types": "^4.0.0-rc.50"
   }
 }
