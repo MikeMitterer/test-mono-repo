@@ -11,6 +11,11 @@
   "scripts": {
     "pkg:version": "yarn workspaces foreach --exclude . -A run pkg:version",
     "update:browser": "yarn workspaces foreach --exclude . -A run update:browser",
+    "update:templates": "yarn workspaces foreach --exclude . -A run update:templates",
+    "lint": "yarn workspaces foreach --exclude . -A run lint",
+    "build": "yarn workspaces foreach --exclude . -A run build",
+    "gtest": "yarn workspaces foreach --exclude . -A exec git status",
+    "etest": "yarn workspaces foreach --exclude . -A exec echo \"PWD: $(pwd)\"",
     "pwd": "yarn workspaces foreach --exclude . -A exec pwd"
   },
   "dependencies": {

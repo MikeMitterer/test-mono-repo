@@ -22,7 +22,8 @@ module.exports = defineConfig({
     // Produziert "Missing field"
     // for (const workspace of Yarn.workspaces()) {
     //   // workspace.set('engines.node', `20.0.0`);
-    //   workspace.set('typescript', `4.9.5`);
+    //   // workspace.set('typescript', `4.9.5`);
+    //   console.log(`cwd: ${workspace.cwd}, ident: ${workspace.ident}`)
     // }
   },
 });
