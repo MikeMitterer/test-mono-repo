@@ -14,6 +14,7 @@
     "update:templates": "yarn workspaces foreach --exclude . -A run update:templates",
     "lint": "yarn workspaces foreach --exclude . -A run lint",
     "build": "yarn workspaces foreach --exclude . -A run build",
+    "git": "yarn workspaces foreach --exclude . -A exec git",
     "gtest": "yarn workspaces foreach --exclude . -A exec git status",
     "etest": "yarn workspaces foreach --exclude . -A exec echo \"PWD: $(pwd)\"",
     "pwd": "yarn workspaces foreach --exclude . -A exec pwd"
