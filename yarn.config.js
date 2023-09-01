@@ -1,3 +1,7 @@
+/** ------------------------------------------------------------------------------------------------
+ * Sub-Projects können mit 'yarn constraints' auf falsche Versionsnummer usw. überprüft werden.
+ */
+
 /** @type {import('@yarnpkg/types')} */
 const { defineConfig } = require('@yarnpkg/types');
 
