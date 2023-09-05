@@ -3,9 +3,11 @@
 
 // Usage:
 //      E2E_TEST='true' jest src/test/e2e/browser.specs.ts
-const isE2ETest = process.env.E2E_TEST === 'true';
+// const isE2ETest = process.env.E2E_TEST === 'true';
 
 module.exports = {
+  // cache: false,
+
     preset: 'ts-jest',
     // preset: "jest-puppeteer",
 
@@ -83,12 +85,12 @@ module.exports = {
 
     // A map from regular expressions to module names that allow to stub out resources with a single module
     moduleNameMapper: {
-        '^@images(.*)$': '<rootDir>/src/site/images/$1',
-        '^@/(.*)$': '<rootDir>/src/main/$1',
-        '^@test/(.*)$': '<rootDir>/test/$1',
+        // '^@images(.*)$': '<rootDir>/src/site/images/$1',
+        '^@/(.*)$': '<rootDir>/src/$1',
+        // '^@test/(.*)$': '<rootDir>/test/$1',
 
         // Config: https://jestjs.io/docs/en/webpack.html
-        '.(scss)$': 'identity-obj-proxy',
+        // '.(scss)$': 'identity-obj-proxy',
     },
 
     // An array of regexp pattern strings, matched against all module paths
@@ -138,18 +140,20 @@ module.exports = {
     // setupTestFrameworkScriptFile: null,
 
     // https://www.npmjs.com/package/jest-extended#setup
-    "setupFilesAfterEnv": [ "jest-extended/all", './test/jest.setup.js' ],
+    "setupFilesAfterEnv": [ "jest-extended/all", './tests/jest.setup.ts' ],
 
     // A list of paths to snapshot serializer modules Jest should use for snapshot testing
     // snapshotSerializers: [],
 
     // The test environment that will be used for testing
     //      https://jestjs.io/docs/en/configuration.html#testenvironment-string
-    // testEnvironment: 'jsdom',
-    testEnvironment: 'node',
+    testEnvironment: 'jsdom',
+    //testEnvironment: 'node',
 
     // Options that will be passed to the testEnvironment
-    // testEnvironmentOptions: {},
+    testEnvironmentOptions: {
+        url: 'http://localhost/',
+    },
 
     // Adds a location field to test results
     // testLocationInResults: false,
@@ -163,8 +167,8 @@ module.exports = {
         // "**/src/test/**/*.[jt]s?(x)"
 
         // Testet nur! TS-Files
-        '<rootDir>/test/**/*.(spec|specs|test).ts?(x)',
-    ],
+        '<rootDir>/tests/**/*.(spec|specs|test).ts?(x)',
+  ],
 
     // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
     // testPathIgnorePatterns: [
@@ -188,43 +192,48 @@ module.exports = {
 
     // A map from regular expressions to paths to transformers
     // transform: null,
-    transform: {
-        '\\.jsx?$': 'babel-jest',
+  transform: {
+    '\\.jsx?$': 'babel-jest',
 
-        '^.+\\.js?$': 'babel-jest',
+    '^.+\\.js?$': 'babel-jest',
 
-        // '^.+\\.js?$': require.resolve('babel-jest'),
+    // '^.+\\.js?$': require.resolve('babel-jest'),
+    // '^.+\\.vue$': 'vue-jest',
+    '^.+\\.vue$': require.resolve('@vue/vue2-jest'),
 
-        // Config: https://jestjs.io/docs/en/webpack.html
-        // '.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-        //     '<rootDir>/__mocks__/fileTransformer.js',
-        // '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
+    // Config: https://jestjs.io/docs/en/webpack.html
+    // '.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+    //     '<rootDir>/__mocks__/fileTransformer.js',
+    // '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
 
         '^.+\\.(ts|tsx)$': 'ts-jest',
-    },
+  },
+  
+  // An array of regexp pattern strings that are matched against all source file paths,
+  // matched files will skip transformation
+  //
+  // A MUST! if the following module is in ES6-Format!!!!
+  //
+  transformIgnorePatterns: ['<rootDir>/node_modules/(?!(@mmit|vuetify|@mdi)/.*)'],
 
-    // An array of regexp pattern strings that are matched against all source file paths,
-    // matched files will skip transformation
-    //
-    // UNBEDINGT Notwendig für ES6 module!!!!
-    transformIgnorePatterns: ['<rootDir>/node_modules/(?!@mmit/.*)'],
+  // An array of regexp pattern strings that are matched against all
+  // modules before the module loader will automatically return a mock for them
+  // unmockedModulePathPatterns: undefined,
 
-    // An array of regexp pattern strings that are matched against all
-    // modules before the module loader will automatically return a mock for them
-    // unmockedModulePathPatterns: undefined,
+  // Indicates whether each individual test should be reported during the run
+  // verbose: null,
 
-    // Indicates whether each individual test should be reported during the run
-    // verbose: null,
+  // An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode
+  // watchPathIgnorePatterns: [],
 
-    // An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode
-    // watchPathIgnorePatterns: [],
+  // Whether to use watchman for file crawling
+  // watchman: true,
 
-    // Whether to use watchman for file crawling
-    // watchman: true,
+
 };
 
-if (isE2ETest) {
-    module.exports.globalSetup = 'jest-environment-puppeteer/setup';
-    module.exports.globalTeardown = 'jest-environment-puppeteer/teardown';
-    module.exports.testEnvironment = 'jest-environment-puppeteer';
-}
+// if(isE2ETest) {
+//   module.exports.globalSetup = "jest-environment-puppeteer/setup";
+//   module.exports.globalTeardown = "jest-environment-puppeteer/teardown";
+//   module.exports.testEnvironment = "jest-environment-puppeteer";
+// }
