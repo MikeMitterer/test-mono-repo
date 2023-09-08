@@ -9,7 +9,8 @@
     "hoistingLimits": "dependencies"
   },
   "scripts": {
-    "pkg:version": "yarn workspaces foreach --exclude . -A run pkg:version",
+    "version:pkg": "yarn workspaces foreach --exclude . -A run version:pkg",
+    "version:remote": "yarn workspaces foreach --exclude . -A run version:remote",
     "update:browser": "yarn workspaces foreach --exclude . -A run update:browser",
     "update:templates": "yarn workspaces foreach --exclude . -A run update:templates",
     "lint": "yarn workspaces foreach --exclude . -A run lint",

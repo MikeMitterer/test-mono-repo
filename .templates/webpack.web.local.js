@@ -11,7 +11,7 @@ module.exports = {
     // },
     plugins: [
         // Clean Terminal before next build
-        new CleanTerminalPlugin(),
+        // new CleanTerminalPlugin(),
 
     ]
 };

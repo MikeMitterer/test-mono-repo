@@ -25,10 +25,10 @@ module.exports = {
     ],
     plugins: [
         // yarn add -D "@babel/plugin-proposal-class-properties" "@babel/plugin-proposal-object-rest-spread" "@babel/plugin-transform-runtime" "@babel/plugin-proposal-object-rest-spread" "@babel/plugin-proposal-nullish-coalescing-operator" "@babel/plugin-proposal-optional-chaining" "babel-plugin-transform-inline-environment-variables"
-        '@babel/proposal-class-properties',
-        '@babel/proposal-object-rest-spread',
-        '@babel/plugin-proposal-nullish-coalescing-operator',
-        '@babel/plugin-proposal-optional-chaining',
+        // '@babel/plugin-transform-class-properties',
+        // '@babel/proposal-object-rest-spread',
+        // '@babel/plugin-proposal-nullish-coalescing-operator',
+        // '@babel/plugin-proposal-optional-chaining',
         '@babel/plugin-transform-runtime',
         [
             'transform-inline-environment-variables',

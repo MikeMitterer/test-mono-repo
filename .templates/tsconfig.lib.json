@@ -19,7 +19,12 @@
 
         "outDir": "./lib",
       
-        // wird in packages.json beim "build" überschrieben (src/main)
+        // Ist "rootDir" z.B. auf "./src" kommt bei Jest folgende Fehlermeldung:
+        //     Unable to process '...UserFactory.specs.ts', please make sure that `outDir` in your tsconfig
+        //     is neither `''` or `'.'`. You can also configure Jest config option
+        //     `transformIgnorePatterns` to inform `ts-jest` to transform
+        //
+        // wird in packages.json beim "build" evtl. überschrieben (src/main)
         "rootDir": ".",
 
         // commonjs, amd oder es6 (esnext)
@@ -114,6 +119,7 @@
         // "reportFiles": ["src/**/*.{ts,tsx}"]
     },
     "include": [
+        "src/main/index.ts",
         "src/main/**/*.ts",
 
         // Damit funktioniert jest-extended + qunit

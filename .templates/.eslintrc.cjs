@@ -6,6 +6,11 @@
  *
  * Installation:
  *     yarn add --dev @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint typescript
+ *
+ * Update:
+ *     pacakage.json:
+ *         "lint": "yarn eslint src tests",
+ *         "lint:fix": "yarn eslint src --fix",
  */
 /* eslint-env node */
 module.exports = {
@@ -15,7 +20,7 @@ module.exports = {
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
-        "project": ["./tsconfig.json"]
+        "project": ["./tsconfig.lib.json", "./tsconfig.json"]
     },
     plugins: [
         '@typescript-eslint'
@@ -23,7 +28,12 @@ module.exports = {
     "rules": {
         // disable the rule for all files
         "@typescript-eslint/explicit-function-return-type": "off",
-        "@typescript-eslint/no-unused-vars": "off"
+        "@typescript-eslint/no-unused-vars": "off",
+
+        // Weitere Infos: https://stackoverflow.com/a/70131153/504184
+        '@typescript-eslint/ban-ts-comment': [
+            'error', { 'ts-ignore': 'allow-with-description' },
+        ],
     },
     "overrides": [
         {
@@ -44,6 +54,8 @@ module.exports = {
         "jest.setup.js",
         "service-worker.js",
         "*.config.js",
-        "src/types/global.d.ts"
+        "src/types/global.d.ts",
+        "src/global.d.ts",
+        "src/node/*"
     ],
 };

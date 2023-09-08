@@ -41,7 +41,7 @@
         // "node_modules/tslint-override/register.d.ts",
 
         // QUnit scheint sonst nicht zu funktionieren
-        "node_modules/@types/qunit/index.d.ts"
+        // "node_modules/@types/qunit/index.d.ts"
 
         // Test-Config file
         // Damit das funktioniert muss auch
