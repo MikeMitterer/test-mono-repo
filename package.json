@@ -1,16 +1,26 @@
 {
-  "name": "root",
+  "name": "Templates",
+  "packageManager": "yarn@4.0.0-rc.50",
   "private": true,
+  "workspaces": [
+    "packages/typescript-starter"
+  ],
+  "installConfig": {
+    "hoistingLimits": "dependencies"
+  },
   "scripts": {
-    "bootstrap": "lerna exec yarn",
-    "publish": "lerna publish --force-publish",
-    "test": "lerna run test"
+    "version:pkg": "yarn workspaces foreach --exclude . -A run version:pkg",
+    "version:remote": "yarn workspaces foreach --exclude . -A run version:remote",
+    "update:browser": "yarn workspaces foreach --exclude . -A run update:browser",
+    "update:templates": "yarn workspaces foreach --exclude . -A run update:templates",
+    "lint": "yarn workspaces foreach --exclude . -A run lint",
+    "build": "yarn workspaces foreach --exclude . -A run build",
+    "git": "yarn workspaces foreach --exclude . -A exec git",
+    "gtest": "yarn workspaces foreach --exclude . -A exec git status",
+    "etest": "yarn workspaces foreach --exclude . -A exec echo \"PWD: $(pwd)\"",
+    "pwd": "yarn workspaces foreach --exclude . -A exec pwd"
   },
-  "workspaces": {
-    "packages": ["packages/*"],
-    "nohoist": ["**/@mmit/vuetify-ts-starter"]
-  },
-  "devDependencies": {
-    "lerna": "^3.22.1"
+  "dependencies": {
+    "@yarnpkg/types": "^4.0.0-rc.50"
   }
 }
