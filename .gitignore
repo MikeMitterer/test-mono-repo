@@ -4,4 +4,5 @@ dist
 tsconfig.tsbuildinfo
 packages/
 hist.monorepo.txt
+packages.zip
 
