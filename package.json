@@ -1,6 +1,6 @@
 {
   "name": "Templates",
-  "packageManager": "yarn@4.0.0-rc.50",
+  "packageManager": "yarn@4.0.0-rc.51",
   "private": true,
   "workspaces": [
     "packages/typescript-starter"
