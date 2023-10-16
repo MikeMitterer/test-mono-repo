@@ -3,7 +3,8 @@
   "packageManager": "yarn@4.0.0-rc.51",
   "private": true,
   "workspaces": [
-    "packages/typescript-starter"
+    "packages/typescript-starter",
+    "packages/vuetify-ts-starter"
   ],
   "installConfig": {
     "hoistingLimits": "dependencies"
